@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 #
-# library code for getting a chapter of a manga from mangareader
+# library code for getting a chapter of a manga from onepiece-tube
 #
 # download scripts should only call #get
 
@@ -12,9 +12,9 @@
 # @access private
 getPageCount () {
 
-    local pages=$(wget -q "${URI}" -O - | grep '</select> of ' | sed 's#</select> of ##g' | sed 's#</div>##g')
+    local pages=$(wget -q "${URI}" -O - | grep 'var lastimg = ' | sed 's#.*var lastimg = ##g' | sed 's#;.*##g')
 
-    return $pages;
+    return ${pages};
 }
 
 # outputs URI of manga page.
@@ -24,7 +24,7 @@ getPageCount () {
 # @access private
 getPageUri () {
 
-    echo "http://www.mangareader.net/${NAME}/${CHAPTER}/${1}"
+    echo "http://onepiece-tube.com/kapitel/${CHAPTER}/${1}"
 }
 
 # outputs URI of image of given manga page.
@@ -34,14 +34,14 @@ getPageUri () {
 # @access private
 getImageUri () {
 
-    local imageuri=$(wget -q "${1}" -O - | grep 'id="img"' | sed 's/.*src="//g' | sed 's/".*//g')
+    local imageuri=$(wget -q "${1}" -O - | grep 'id="p"' | sed 's/.*src="//g' | sed 's/".*//g')
 
-    echo "${imageuri}"
+    echo "http://onepiece-tube.com${imageuri}"
 }
 
-# downloads all pages
+
+# lädt alle Seiten des Kapitels herunter.
 #
-# @access private
 getPages () {
 
     getPageCount;
@@ -58,14 +58,8 @@ getPages () {
         else
             echo ":( RETRY:"
             wget ${IMAGEURI} --directory-prefix=${CHAPTER_BASE} -nc
-            if [ ! $? -eq 0 ]; then
-                echo "Could not download page ${IMAGEURI}"
-                return 1
-            fi
         fi
     done;
-
-    return 0
 }
 
 # gets the manga
@@ -85,7 +79,7 @@ get () {
     CHAPTER="$1"
 
     # URI to main page of chapter
-    URI="http://www.mangareader.net/${2}/${1}"
+    URI="http://onepiece-tube.com/kapitel/${1}/1"
 
     BASE="${3}"
 
