@@ -3,12 +3,12 @@
 # gets one chapter of one piece manga from mangareader
 #
 # Usage:
-#+ ./getop.sh <chapter>
+#+ ./get_onepiece.sh <chapter>
 
 . lib/mangareader.sh
 
 if [ ! $# -eq 1 ]; then
-    echo "Usage: ./getop.sh <chapter>";
+    echo "Usage: ./get_onepiece.sh <chapter>";
     exit 1;
 fi
 
