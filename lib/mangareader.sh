@@ -83,14 +83,21 @@ get () {
     fi
 
     CHAPTER="$1"
+    DIGIT_COUNT=${DIGIT_COUNT-""}
 
     # URI to main page of chapter
     URI="http://www.mangareader.net/${2}/${1}"
 
     BASE="${3}"
 
+    if [[ "${DIGIT_COUNT}" =~ ^[0-9]$ ]]; then
+        OUTPUT_CHAPTER=$(zeroPrefix ${CHAPTER} ${DIGIT_COUNT})
+    else
+        OUTPUT_CHAPTER="${CHAPTER}"
+    fi
+
     # directory of chapter
-    CHAPTER_BASE="${BASE}/${CHAPTER}"
+    CHAPTER_BASE="${BASE}/${OUTPUT_CHAPTER}"
 
     init;
 

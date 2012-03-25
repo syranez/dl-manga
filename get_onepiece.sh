@@ -15,6 +15,9 @@ fi
 # name of manga on mangareader.
 NAME="one-piece"
 
+# number of digits of the output chapter directory name
+DIGIT_COUNT=3
+
 # local directory in which mangas will be saved.
 TARGET_DIR="${HOME}/mangareader/onepiece"
 

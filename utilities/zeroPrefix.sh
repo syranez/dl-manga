@@ -7,6 +7,8 @@
 #
 #     digit_count is optional. Default is 3.
 
+. ../lib/common.sh
+
 if [ $# -gt 2 ]; then
     echo "Usage: ./prefix <directory> (<digit_count>)";
     exit 1;
@@ -29,30 +31,13 @@ fi
 # @value number
 DIGIT_COUNT=${2-3}
 
-# prefixes a name zeroes.
-#
-# @param string name
-# @output string new name
-zeroPrefix () {
-
-    local length=${#name};
-    local diff=$((DIGIT_COUNT - length));
-    local prefix="";
-
-    for (( i=1; i<=diff; i++)); do
-        prefix="${prefix}0";
-    done;
-
-    echo "${prefix}${name}"
-}
-
 prefix () {
 
     for name in $(ls $1); do
         if [ ! ${#name} -eq ${DIGIT_COUNT} ]; then
-            newname=$(zeroPrefix $name)
+            newname=$(zeroPrefix ${name} ${DIGIT_COUNT})
         fi;
-        mv -v "${1}/${name}" "${1}/${newname}"
+        echo "mv -v" "${1}/${name}" "${1}/${newname}"
     done;
 }
 
