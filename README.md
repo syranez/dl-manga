@@ -4,9 +4,10 @@ dl-mangareader is a bash framework for downloading an manga chapter from an onli
 
 For every manga you want to retrieve you have to invoke a (configuration) script, that uses the framework functionality. If there is not such a script already available, you have to write it. See chapter "Extending" for instructions.
 
-Currently supported manga viewers are
+Currently supported manga viewer sites are
 
 1. mangareader.net
+1. onepiece-tube.com
 
 ## Usage
 
