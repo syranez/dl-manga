@@ -1,25 +1,19 @@
-#! /usr/bin/env bash
+# skeleton manga data file.
 #
-# skeleton downloader
 #
-# Each downloader has this interface:
-#+
-#+ ./skeleton.sh <chapter>
 
-# include get functionality for the site from which you want to get the manga.
+# load the framework for the manga site.
 #
-#  Site            => statement
+# If the site is not listed here, the site is not supported.
+#
+#  Site              => value
 #+============================
-#+ mangareader.net   => . lib/mangareader.sh
-#+ onepiece-tube.com => . lib/onepiecetube.sh
-. lib/mangareader.sh
+#+ mangareader.net   => mangareader
+#+ onepiece-tube.com => onepiecetube
+#+
+SOURCE="change-me"
 
-if [ ! $# -eq 1 ]; then
-    echo "Usage: ./skeleton.sh <chapter>";
-    exit 1;
-fi
-
-# name of manga on mangareader.
+# name of manga on the site.
 #+ this is the name used in the uri
 #+ e. g. One Piece => one-piece
 #
@@ -38,5 +32,7 @@ DIGIT_COUNT=3
 # all sites.
 TARGET_DIR="~/mangareader/changeme"
 
-get "$1" "${NAME}" "${TARGET_DIR}"
-exit $?
+# index site of manga
+#
+# mangareader.net-only configuration parameter
+INDEX_SITE="change-me"

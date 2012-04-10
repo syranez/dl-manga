@@ -6,6 +6,63 @@
 
 . lib/common.sh
 
+# gets the manga
+#
+# @param string chapter of manga
+# @param string name of manga
+# @param string target directory in which manga will be stored
+# @return number exit status
+# @access public
+get () {
+
+    if [ ! $# -eq 3 ]; then
+        echo "Usage: get <chapter> <name-of-manga> <target-dir>";
+        exit 1;
+    fi
+
+    CHAPTER="$1"
+
+    # URI to main page of chapter
+    URI="http://onepiece-tube.com/kapitel/${1}/1"
+
+    BASE="${3}"
+
+    # directory of chapter
+    CHAPTER_BASE="${BASE}/${CHAPTER}"
+
+    init;
+
+    echo "Get chapter ${CHAPTER}..."
+    getPages
+    return $?
+}
+
+# outputs name (numeric) of all chapters of a manga.
+#
+# @todo implement me
+# @param string URI of manga page
+# @param string Name of Manga
+# @output string
+# @access public
+getAvailableChapters () {
+
+    echo "";
+}
+
+# detects new chapters of manga
+#
+# @todo implement me
+# @output string new chapters
+# @access public
+detectNewChapters () {
+
+    echo "";
+}
+
+
+
+
+
 # returns page count of chapter
 #
 # @return count
@@ -60,35 +117,4 @@ getPages () {
             wget ${IMAGEURI} --directory-prefix=${CHAPTER_BASE} -nc
         fi
     done;
-}
-
-# gets the manga
-#
-# @param string chapter of manga
-# @param string name of manga
-# @param string target directory in which manga will be stored
-# @return number exit status
-# @access public
-get () {
-
-    if [ ! $# -eq 3 ]; then
-        echo "Usage: get <chapter> <name-of-manga> <target-dir>";
-        exit 1;
-    fi
-
-    CHAPTER="$1"
-
-    # URI to main page of chapter
-    URI="http://onepiece-tube.com/kapitel/${1}/1"
-
-    BASE="${3}"
-
-    # directory of chapter
-    CHAPTER_BASE="${BASE}/${CHAPTER}"
-
-    init;
-
-    echo "Get chapter ${CHAPTER}..."
-    getPages
-    return $?
 }
