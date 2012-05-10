@@ -36,7 +36,7 @@ getNewChapters () {
     echo "New Chapters: ${#newChapters[*]}";
 
     if [[ ! ${#newChapters[*]} -eq 0 ]]; then
-        echo ${newChapters};
+        echo ${newChapters[*]} | tr " " "\n"
     fi
 
     return 0;
