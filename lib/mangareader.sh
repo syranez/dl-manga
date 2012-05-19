@@ -44,20 +44,15 @@ get () {
     return $?
 }
 
-# outputs name (numeric) of all chapters of a manga (only new mangareader linkage)
-#
-# New mangareader linkage:
-#
-#     /{manga}/{chapter}
+# outputs name (numeric) of all chapters of a manga
 #
 # @param string URI of manga page
 # @param string Name of Manga on mangareader.net
 # @output string
 # @access public
-# @todo Extend for old mangareader linkage
 getAvailableChapters () {
 
-    local chapters=$(wget -q "${1}" -O - | grep "<a href=\"/${2}" | sed 's/">.*//g' | sed "s#<a href=\"/${2}/##g");
+    local chapters=$(wget -q "${1}" -O - | grep "<a href=\".*/${2}" | sed 's/">.*//g' | sed "s#<a href=\"/${2}/##g" | sed 's/.*chapter-//g' | sed 's/\.html//g');
 
     echo "${chapters}"
 }
