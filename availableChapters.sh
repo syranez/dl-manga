@@ -28,9 +28,8 @@ fi
 availableChapters () {
 
     local chapters=$(getAvailableChapters "${INDEX_SITE}" "${NAME}");
-    echo "Available Chapters: ${#chapters}"
 
-    declare -a uniqueChapters="";
+    declare -a uniqueChapters;
     if [[ ! ${#chapters} -eq 0 ]]; then
 
         # uniq chapters
@@ -39,9 +38,9 @@ availableChapters () {
             uniqueChapters["${chapter}"]="${chapter}";
         done;
 
-        echo ${uniqueChapters[*]};
-#        echo "${chapters}";
     fi
+    echo "Available Chapters: ${#uniqueChapters[*]}"
+    echo ${uniqueChapters[*]};
 
     return 0;
 }
