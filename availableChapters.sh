@@ -29,7 +29,7 @@ availableChapters () {
 
     local chapters=$(getAvailableChapters "${INDEX_SITE}" "${NAME}");
 
-    declare -a uniqueChapters;
+    declare -A uniqueChapters;
     if [[ ! ${#chapters} -eq 0 ]]; then
 
         # uniq chapters
