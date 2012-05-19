@@ -13,22 +13,22 @@ Currently supported manga viewer sites are
 
 1. Download a manga
 
-    ./get <manga> <chapter>
+    ./get <manga-definition-file> <chapter>
 
 2. Get available chapters
 
-    ./availableChapters <manga>
+    ./availableChapters <manga-definition-file>
 
 3. Check for new chapters
 
-    ./newChapters <manga>
+    ./newChapters <manga-definition-file>
 
 ## get-Usage
 
 If there is already a script for your manga, then all you have to do is:
 
 1. $EDITOR data/<manga> and configure it as you wish.
-2. execute ./get.sh <manga> <chapter>
+2. execute ./get.sh <manga-definition-file> <chapter>
 3. Be happy and buy the paper book if available.
 
 ## Creating a manga definition file

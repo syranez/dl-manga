@@ -3,25 +3,25 @@
 # gets one chapter of a manga
 #
 # Usage:
-#+ ./get.sh <manga> <chapter>
+#+ ./get.sh <manga-definition-file> <chapter>
 
 
 if [ ! $# -eq 2 ]; then
-    echo "Usage: ./get.sh <manga> <chapter>";
+    echo "Usage: ./get.sh <manga-definition-file> <chapter>";
     exit 1;
 fi
 
-if [[ ! -f ./data/${1}.sh ]]; then
-    echo "Unknown manga ${1}. Please add first a manga definition file."
+if [[ ! -f ${1} ]]; then
+    echo "Unknown manga-definition-file ${1}."
     exit 2;
-else 
-    . "data/${1}.sh"
+else
+    . "${1}"
 fi
 
 if [[ ! -f ./lib/${SOURCE}.sh ]]; then
     echo "Unknown source type ${SOURCE}. Please define the source of manga."
     exit 3;
-else 
+else
     . "./lib/${SOURCE}.sh"
 fi
 

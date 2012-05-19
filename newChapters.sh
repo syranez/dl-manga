@@ -3,19 +3,19 @@
 # gives the numeric name of chapters that are not downloaded (=e. g. cos new)
 #
 # Usage:
-#+ ./newChapters <manga>
+#+ ./newChapters <manga-definition-file>
 
 
 if [ ! $# -eq 1 ]; then
-    echo "Usage: ./available.sh <manga>";
+    echo "Usage: ./available.sh <manga-definition-file>";
     exit 1;
 fi
 
-if [[ ! -f ./data/${1}.sh ]]; then
-    echo "Unknown manga ${1}. Please add first a manga definition file."
+if [[ ! -f ${1} ]]; then
+    echo "Unknown manga-definition-file ${1}."
     exit 2;
 else 
-    . "data/${1}.sh"
+    . "${1}"
 fi
 
 if [[ ! -f ./lib/${SOURCE}.sh ]]; then

@@ -3,25 +3,25 @@
 # gives the numeric name of chapters that are availabe.
 #
 # Usage:
-#+ ./availableChapters <manga>
+#+ ./availableChapters <data-definition-file>
 
 
 if [ ! $# -eq 1 ]; then
-    echo "Usage: ./availableChapters.sh <manga>";
+    echo "Usage: ./availableChapters.sh <data-definition-file>";
     exit 1;
 fi
 
-if [[ ! -f ./data/${1}.sh ]]; then
-    echo "Unknown manga ${1}. Please add first a manga definition file."
+if [[ ! -f ${1} ]]; then
+    echo "Unknown data-definition-file ${1}."
     exit 2;
-else 
-    . "data/${1}.sh"
+else
+    . "${1}"
 fi
 
 if [[ ! -f ./lib/${SOURCE}.sh ]]; then
     echo "Unknown source type ${SOURCE}. Please define the source of manga."
     exit 3;
-else 
+else
     . "./lib/${SOURCE}.sh"
 fi
 
