@@ -8,6 +8,7 @@ Currently supported manga viewer sites are
 
 1. mangareader.net
 1. onepiece-tube.com
+1. mangavolume.com
 
 ## Functionality
 
