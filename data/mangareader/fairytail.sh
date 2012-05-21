@@ -1,6 +1,4 @@
-# naruto data file for mangareader
-#
-#
+# Fairy Tail manga data file for mangareader
 
 # manga site
 SOURCE="mangareader"

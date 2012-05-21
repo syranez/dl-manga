@@ -1,6 +1,4 @@
-# fourteen data file for mangareader
-#
-#
+# fourteen manga data file for mangareader
 
 # manga site
 SOURCE="mangareader"

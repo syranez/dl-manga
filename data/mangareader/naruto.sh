@@ -1,6 +1,4 @@
-# naruto data file for mangareader
-#
-#
+# naruto manga data file for mangareader
 
 # manga site
 SOURCE="mangareader"

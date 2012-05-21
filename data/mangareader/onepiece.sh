@@ -1,6 +1,4 @@
-# one pice data file for mangareader
-#
-#
+# one piece manga data file for mangareader
 
 # manga site
 SOURCE="mangareader"
