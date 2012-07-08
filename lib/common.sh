@@ -12,21 +12,18 @@ init () {
     fi
 }
 
-# prefixes a name zeroes.
+# prefixes a name with zeroes.
 #
-# @param string name
+# @param number chapter name
 # @param number digit count
 # @output string new name
 zeroPrefix () {
 
     local name=${1}
-    local length=${#name};
-    local diff=$((${2} - length));
-    local prefix="";
+    local count=${2};
+    local result="";
 
-    for (( i=1; i<=diff; i++)); do
-        prefix="${prefix}0";
-    done;
+    printf -v result "%0${count}d" ${name}
 
-    echo "${prefix}${name}"
+    echo "${result}"
 }
